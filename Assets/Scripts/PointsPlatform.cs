@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PointsPlatform : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float _points;
+    [SerializeField] float _platformPoints = 5f;
+    public GameObject player;
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.gameObject == player)
+        {
+            _points += _platformPoints;
+            Destroy(gameObject);
+        }
+    }
+    public float Points(float _points)
+    {
+        return _points;
     }
 }
