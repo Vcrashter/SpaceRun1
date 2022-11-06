@@ -8,7 +8,9 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 5f;
+
     private bool isJumping = false;
+    private bool isTouching = false;
 
     Rigidbody rb;
 
@@ -18,15 +20,24 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        MovementProcess();
         Jump();
+        MovementProcess();
     }
 
     private void MovementProcess()
     {
         float _xValue = Input.GetAxis("Horizontal");
         float _zValue = Input.GetAxis("Vertical");
-        transform.Translate(_xValue * Time.deltaTime * _moveSpeed, 0f, _zValue * Time.deltaTime * _moveSpeed);
+
+        if (isTouching == false)
+        {
+            transform.Translate(_xValue * Time.deltaTime * _moveSpeed, 0f, _zValue * Time.deltaTime * _moveSpeed);
+        }
+
+        else
+        {
+            transform.Translate(0f, 0f, 0f);
+        }
     }
 
     private void Jump()
@@ -37,6 +48,7 @@ public class Movement : MonoBehaviour
             {
                 rb.AddForce(new Vector3(0f, 10f, 0f), ForceMode.Impulse);
                 isJumping = true;
+                isTouching = false;
             }
         }
     }
@@ -46,6 +58,7 @@ public class Movement : MonoBehaviour
         if(collision.gameObject)
         {
             isJumping = false;
+            isTouching = true;
         }
     }
 }
