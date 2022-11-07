@@ -47,6 +47,7 @@ public class Movement : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 rb.AddForce(new Vector3(0f, 10f, 0f), ForceMode.Impulse);
+                transform.parent = null;
                 isJumping = true;
                 isTouching = false;
             }

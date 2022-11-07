@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointsPlatform : MonoBehaviour
+public class ZPlatform : MonoBehaviour
 {
-    [SerializeField] float _points;
-    [SerializeField] float _platformPoints = 5f;
+    [SerializeField] float _platformPointsZ;
     [SerializeField] float _cyrcleLength = 1f;
+
+    private bool _isPointed = false;
 
     public GameObject player;
 
@@ -23,15 +24,19 @@ public class PointsPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == player)
+        if (collision.gameObject == player)
         {
-            _points += _platformPoints;
-            Destroy(gameObject);
-            gameObject.transform.DOKill(true);
+            player.transform.parent = transform;
+            if (_isPointed == false)
+            {
+                _platformPointsZ += 5f;
+                _isPointed = true;
+            }
         }
     }
-    public float Points(float _points)
+
+    public float GetPoints()
     {
-        return _points;
+        return _platformPointsZ;
     }
 }
