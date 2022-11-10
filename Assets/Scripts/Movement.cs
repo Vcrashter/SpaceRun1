@@ -8,9 +8,12 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 5f;
+    [SerializeField] float _life = 3f;
 
     private bool isJumping = false;
     private bool isTouching = false;
+
+    public GameObject destroyer;
 
     Rigidbody rb;
 
@@ -60,6 +63,20 @@ public class Movement : MonoBehaviour
         {
             isJumping = false;
             isTouching = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == destroyer)
+        {
+            gameObject.transform.position = new Vector3(0f, 1.67f, 0f);
+            _life--;
+        }
+
+        if(_life == 0f)
+        {
+            //GAME OVER
         }
     }
 }
