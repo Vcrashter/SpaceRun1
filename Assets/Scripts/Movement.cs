@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     [SerializeField] float _life = 3f;
 
     private bool isJumping = false;
-    private bool isTouching = false;
 
     public GameObject destroyer;
 
@@ -32,7 +31,7 @@ public class Movement : MonoBehaviour
         float _xValue = Input.GetAxis("Horizontal");
         float _zValue = Input.GetAxis("Vertical");
 
-        if (isTouching == false)
+        if (isJumping == true)
         {
             transform.Translate(_xValue * Time.deltaTime * _moveSpeed, 0f, _zValue * Time.deltaTime * _moveSpeed);
         }
@@ -52,7 +51,6 @@ public class Movement : MonoBehaviour
                 rb.AddForce(new Vector3(0f, 10f, 0f), ForceMode.Impulse);
                 transform.parent = null;
                 isJumping = true;
-                isTouching = false;
             }
         }
     }
@@ -62,7 +60,6 @@ public class Movement : MonoBehaviour
         if(collision.gameObject)
         {
             isJumping = false;
-            isTouching = true;
         }
     }
 
@@ -72,6 +69,7 @@ public class Movement : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(0f, 1.67f, 0f);
             _life--;
+            transform.parent = null;
         }
 
         if(_life == 0f)
