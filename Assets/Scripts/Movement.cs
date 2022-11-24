@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Jobs;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 5f;
-    [SerializeField] float _life = 3f;
+    [SerializeField] int _life = 3;
 
     private bool isJumping = false;
 
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        UIManager.Instance.UpdateLife(Life());
     }
     void Update()
     {
@@ -44,11 +46,11 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if(isJumping == false)
+        if (isJumping == false)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                rb.AddForce(new Vector3(0f, 10f, 0f), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0f, 15f, 0f), ForceMode.Impulse);
                 transform.parent = null;
                 isJumping = true;
             }
@@ -57,7 +59,7 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject)
+        if (collision.gameObject)
         {
             isJumping = false;
         }
@@ -65,16 +67,23 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == destroyer)
+        if (other.gameObject == destroyer)
         {
             gameObject.transform.position = new Vector3(0f, 1.67f, 0f);
             _life--;
             transform.parent = null;
         }
 
-        if(_life == 0f)
+        UIManager.Instance.UpdateLife(Life());
+
+        if (_life == 0f)
         {
-            //GAME OVER
+            SceneManager.LoadScene("MainMenu");
         }
+    }
+
+    public int Life()
+    {
+        return _life;
     }
 }

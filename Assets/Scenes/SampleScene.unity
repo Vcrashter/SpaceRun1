@@ -427,7 +427,7 @@ Transform:
   - {fileID: 877782558}
   - {fileID: 1289590021}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &518865265
 PrefabInstance:
@@ -438,6 +438,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
@@ -520,6 +524,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
@@ -838,6 +846,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: m_Name
       value: ZMovePlatform
@@ -955,6 +967,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: m_Name
       value: ZMovePlatform
@@ -1030,6 +1046,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
@@ -1112,6 +1132,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
@@ -1261,6 +1285,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1658683044}
     - target: {fileID: 3538319834681050815, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
@@ -1437,6 +1465,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: m_Name
       value: ZMovePlatform
@@ -1586,6 +1618,7 @@ GameObject:
   - component: {fileID: 2056750844}
   - component: {fileID: 2056750843}
   - component: {fileID: 2056750842}
+  - component: {fileID: 2056750846}
   m_Layer: 5
   m_Name: ScoreBoard
   m_TagString: Untagged
@@ -1676,6 +1709,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2056750846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056750841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92cc482c09065b543b2bebdece00592b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 460105001}
+  lifeText: {fileID: 708877185}
 --- !u!1001 &1897650765050967028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1750,7 +1797,7 @@ PrefabInstance:
       objectReference: {fileID: 75173758}
     - target: {fileID: 3213842405191560872, guid: 52d7f1f90d7f5554b8513646e3c7cc15, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3213842405191560872, guid: 52d7f1f90d7f5554b8513646e3c7cc15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1794,6 +1841,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213842405191560876, guid: 52d7f1f90d7f5554b8513646e3c7cc15, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213842405191560876, guid: 52d7f1f90d7f5554b8513646e3c7cc15, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1869,6 +1920,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1658683044}
+    - target: {fileID: 3517018783892719669, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1658683044}
     - target: {fileID: 3743939949931686192, guid: 934f89e2bd3a2c04e8bb75ba9303a010, type: 3}

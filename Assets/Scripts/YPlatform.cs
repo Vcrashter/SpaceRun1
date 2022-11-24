@@ -7,8 +7,6 @@ public class YPlatform : MonoBehaviour
 {
     [SerializeField] float _cyrcleLength = 3f;
 
-    public GameObject player;
-
     private void Start()
     {
         Movement();
@@ -21,9 +19,9 @@ public class YPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject.tag == "Player")
         {
-            player.transform.parent = transform;
+           collision.transform.parent = transform;
         }
     }
 }

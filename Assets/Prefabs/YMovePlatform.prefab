@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8798890350753567994}
   - component: {fileID: 3724659640023427930}
   - component: {fileID: 5038390740950944108}
-  - component: {fileID: -6881309242262364433}
   - component: {fileID: 6110505954704270338}
+  - component: {fileID: 5980259312020756448}
   m_Layer: 0
   m_Name: YMovePlatform
   m_TagString: Untagged
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-6881309242262364433
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8575224665152292021}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9859178, y: 1, z: 0.9999999}
-  m_Center: {x: -0.007041042, y: 0, z: 0}
 --- !u!114 &6110505954704270338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +99,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cyrcleLength: 3
-  player: {fileID: 0}
+--- !u!64 &5980259312020756448
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575224665152292021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &6746281163364767545
 PrefabInstance:
   m_ObjectHideFlags: 0

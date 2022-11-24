@@ -6,8 +6,10 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] float _coinPoints;
 
-    public GameObject player;
-
+    private void Start()
+    {
+        UIManager.Instance.UpdateScore(GetCoin());
+    }
     private void Update()
     {
         transform.Rotate(0, 0, 2.5f);
@@ -15,11 +17,13 @@ public class Coin : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == player)
+        if(collision.gameObject.tag == "Player")
         {
             _coinPoints = 3f;
             Destroy(gameObject);
         }
+
+        UIManager.Instance.UpdateScore(GetCoin());
     }
 
     public float GetCoin()
