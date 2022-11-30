@@ -13,8 +13,6 @@ public class Movement : MonoBehaviour
 
     private bool isJumping = false;
 
-    public GameObject destroyer;
-
     Rigidbody rb;
 
     private void Start()
@@ -32,16 +30,7 @@ public class Movement : MonoBehaviour
     {
         float _xValue = Input.GetAxis("Horizontal");
         float _zValue = Input.GetAxis("Vertical");
-
-        if (isJumping == true)
-        {
-            transform.Translate(_xValue * Time.deltaTime * _moveSpeed, 0f, _zValue * Time.deltaTime * _moveSpeed);
-        }
-
-        else
-        {
-            transform.Translate(0f, 0f, 0f);
-        }
+        transform.Translate(_xValue * Time.deltaTime * _moveSpeed, 0f, _zValue * Time.deltaTime * _moveSpeed);
     }
 
     private void Jump()
@@ -67,13 +56,44 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == destroyer)
+        if (other.gameObject.tag == "Check3")
         {
-            gameObject.transform.position = new Vector3(0f, 1.67f, 0f);
-            _life--;
-            transform.parent = null;
+            if (other.gameObject.tag == "Destroyer")
+            {
+                gameObject.transform.position = new Vector3(1f, 1.67f, 255f);
+                _life--;
+                transform.parent = null;
+            }
         }
 
+        else if (other.gameObject.tag == "Check2")
+        {
+            if (other.gameObject.tag == "Destroyer")
+            {
+                gameObject.transform.position = new Vector3(1f, 1.67f, 177f);
+                _life--;
+                transform.parent = null;
+            }
+        }
+
+        else if (other.gameObject.tag == "Check1")
+        {
+            if (other.gameObject.tag == "Destroyer")
+            {
+                gameObject.transform.position = new Vector3(11f, 1.67f, 78f);
+                _life--;
+                transform.parent = null;
+            }
+        }
+        else
+        {
+            if (other.gameObject.tag == "Destroyer")
+            {
+                gameObject.transform.position = new Vector3(0f, 1.67f, 0f);
+                _life--;
+                transform.parent = null;
+            }
+        }
         UIManager.Instance.UpdateLife(Life());
 
         if (_life == 0f)
@@ -81,7 +101,6 @@ public class Movement : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
     }
-
     public int Life()
     {
         return _life;

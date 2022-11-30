@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - zPlatform
+  - Destroyer
+  - Check1
+  - Check2
+  - Check3
   layers:
   - Default
   - TransparentFX

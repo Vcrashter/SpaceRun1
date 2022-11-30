@@ -21,6 +21,7 @@ public class Coin : MonoBehaviour
         {
             _coinPoints = 3f;
             Destroy(gameObject);
+            transform.Rotate(0, 0, 0);
         }
 
         UIManager.Instance.UpdateScore(GetCoin());
