@@ -143,4 +143,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinPoints: 0
-  player: {fileID: 0}

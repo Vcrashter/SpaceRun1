@@ -14,11 +14,14 @@ public class Movement : MonoBehaviour
     private bool isJumping = false;
 
     Rigidbody rb;
+    private GameMaster gm;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         UIManager.Instance.UpdateLife(Life());
+        gm = GameObject.FindWithTag("GM").GetComponent<GameMaster>();
+        transform.position = new Vector3(0f, 1.67f, 0f);
     }
     void Update()
     {
@@ -52,55 +55,30 @@ public class Movement : MonoBehaviour
         {
             isJumping = false;
         }
+
+        if(collision.gameObject.CompareTag("Finish"))
+        {
+            SceneManager.LoadScene("FinishMenu");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Check3")
+        if (other.gameObject.CompareTag("Destroyer"))
         {
-            if (other.gameObject.tag == "Destroyer")
-            {
-                gameObject.transform.position = new Vector3(1f, 1.67f, 255f);
-                _life--;
-                transform.parent = null;
-            }
+            gameObject.transform.position = gm.lastCheckPointPos;
+            _life--;
+            transform.parent = null;
         }
 
-        else if (other.gameObject.tag == "Check2")
-        {
-            if (other.gameObject.tag == "Destroyer")
-            {
-                gameObject.transform.position = new Vector3(1f, 1.67f, 177f);
-                _life--;
-                transform.parent = null;
-            }
-        }
-
-        else if (other.gameObject.tag == "Check1")
-        {
-            if (other.gameObject.tag == "Destroyer")
-            {
-                gameObject.transform.position = new Vector3(11f, 1.67f, 78f);
-                _life--;
-                transform.parent = null;
-            }
-        }
-        else
-        {
-            if (other.gameObject.tag == "Destroyer")
-            {
-                gameObject.transform.position = new Vector3(0f, 1.67f, 0f);
-                _life--;
-                transform.parent = null;
-            }
-        }
         UIManager.Instance.UpdateLife(Life());
 
         if (_life == 0f)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("loseMenu");
         }
     }
+
     public int Life()
     {
         return _life;

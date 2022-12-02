@@ -391,6 +391,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 216258911210960805, guid: b1cf1b292e72f154aa86024e11008dbc, type: 3}
+      propertyPath: m_text
+      value: 'SPACE RUNNER
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 216258911210960805, guid: b1cf1b292e72f154aa86024e11008dbc, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 2402561758242783258, guid: b1cf1b292e72f154aa86024e11008dbc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
