@@ -5,47 +5,78 @@ using UnityEngine;
 using UnityEngine.Jobs;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed = 5f;
+    [SerializeField] float _moveSpeed =8f;
     [SerializeField] int _life = 3;
 
     private bool isJumping = false;
 
-    Rigidbody rb;
+    [SerializeField] private Button _jumpButton;
+
+    private Animator anim;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] FixedJoystick _joystick;
     private GameMaster gm;
 
     private void Start()
     {
+        if (_jumpButton != null)
+        {
+            _jumpButton.onClick.AddListener(Jump);
+        }
         rb = GetComponent<Rigidbody>();
         UIManager.Instance.UpdateLife(Life());
         gm = GameObject.FindWithTag("GM").GetComponent<GameMaster>();
+        anim = gameObject.GetComponentInChildren<Animator>();
         transform.position = new Vector3(0f, 1.67f, 0f);
     }
-    void Update()
+    private void FixedUpdate()
     {
-        Jump();
         MovementProcess();
+    }
+
+    private void PlayAnimation(bool isPlayingAnim)
+    {
+        if (isPlayingAnim)
+        {
+            anim.SetInteger("AnimationPar", 1);
+        }
+        else
+        {
+            anim.SetInteger("AnimationPar", 0);
+        }
     }
 
     private void MovementProcess()
     {
+#if UNITY_EDITOR
         float _xValue = Input.GetAxis("Horizontal");
         float _zValue = Input.GetAxis("Vertical");
         transform.Translate(_xValue * Time.deltaTime * _moveSpeed, 0f, _zValue * Time.deltaTime * _moveSpeed);
+#endif
+        if (_joystick.Horizontal != 0f)
+        {
+            PlayAnimation(true);
+        }
+        
+        else
+        {
+            PlayAnimation(false);
+        }
+
+        transform.Translate(_joystick.Horizontal * _moveSpeed * Time.deltaTime, 0f, _joystick.Vertical * _moveSpeed * Time.deltaTime);
     }
 
-    private void Jump()
+    public void Jump()
     {
-        if (isJumping == false)
+        if (!isJumping)
         {
-            if (Input.GetButtonDown("Jump"))
-            {
-                rb.AddForce(new Vector3(0f, 15f, 0f), ForceMode.Impulse);
-                transform.parent = null;
-                isJumping = true;
-            }
+            rb.AddForce(new Vector3(0f, 35f, 0f), ForceMode.Impulse);
+            transform.parent = null;
+            isJumping = true;
         }
     }
 
@@ -56,7 +87,7 @@ public class Movement : MonoBehaviour
             isJumping = false;
         }
 
-        if(collision.gameObject.CompareTag("Finish"))
+        if (collision.gameObject.CompareTag("Finish"))
         {
             SceneManager.LoadScene("FinishMenu");
         }
