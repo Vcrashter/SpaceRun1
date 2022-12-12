@@ -2088,24 +2088,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 270253225}
     - target: {fileID: 1998772513, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
+      propertyPath: _moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998772513, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
       propertyPath: _jumpButton
       value: 
       objectReference: {fileID: 351149411}
-    - target: {fileID: 1998772514, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998772514, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 1147752367711628, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
       propertyPath: m_Name
       value: Stylized Astronaut
-      objectReference: {fileID: 0}
-    - target: {fileID: 1147752367711628, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4268597916284530, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
       propertyPath: m_RootOrder

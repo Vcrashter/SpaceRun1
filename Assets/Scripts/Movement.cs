@@ -74,9 +74,15 @@ public class Movement : MonoBehaviour
     {
         if (!isJumping)
         {
-            rb.AddForce(new Vector3(0f, 35f, 0f), ForceMode.Impulse);
+            rb.velocity = Vector3.up * 20f;
             transform.parent = null;
             isJumping = true;
+        }
+
+        if(isJumping)
+        {
+            rb.velocity += Vector3.up * Physics.gravity.y;
+            PlayAnimation(false);
         }
     }
 
